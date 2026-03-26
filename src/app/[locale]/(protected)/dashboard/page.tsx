@@ -7,7 +7,6 @@ import { getRecentTransactions, getExpenseSummary } from "@/lib/actions/transact
 import { prisma } from "@/lib/prisma";
 import QuickAddTransaction from "@/components/QuickAddTransaction";
 import TransactionList from "@/components/TransactionList";
-import ThemeToggle from "@/components/ThemeToggle";
 import HeaderMenu from "@/components/HeaderMenu";
 import ExpensePieChart from "@/components/ExpensePieChart";
 import Image from "next/image";
@@ -70,23 +69,17 @@ export default async function DashboardPage() {
   return (
     <div className="page-wrapper">
       <header className="dash-header">
-        <div className="dash-header-row1">
-          <div className="dash-header-brand">
-            <Image src="/logo.png" alt="Icon" width={32} height={32} style={{ borderRadius: "8px", objectFit: "cover" }} />
-            <h1>MoneyBook</h1>
-            <span className="version-badge">v{version}</span>
-          </div>
-          <div className="dash-header-actions">
-            <ThemeToggle />
-            <HeaderMenu
-              userName={session.user.name}
-              signOutAction={async () => {
-                "use server";
-                await signOut({ redirectTo: "/" });
-              }}
-            />
-          </div>
+        <div className="dash-header-brand">
+          <Image src="/logo.png" alt="Icon" width={32} height={32} style={{ borderRadius: "8px", objectFit: "cover" }} />
+          <h1>MoneyBook</h1>
         </div>
+        <HeaderMenu
+          userName={session.user.name}
+          signOutAction={async () => {
+            "use server";
+            await signOut({ redirectTo: "/" });
+          }}
+        />
       </header>
 
       <main className="dash-main">
@@ -100,6 +93,8 @@ export default async function DashboardPage() {
           <TransactionList transactions={plainTransactions} accounts={plainAccounts} />
         </div>
       </main>
+
+      <footer className="page-footer">v{version}</footer>
     </div>
   );
 }

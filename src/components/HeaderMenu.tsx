@@ -20,7 +20,14 @@ export default function HeaderMenu({
 }) {
   const locale = useLocale();
   const [open, setOpen] = useState(false);
+  const [theme, setTheme] = useState<"light" | "dark">("light");
   const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const saved = (localStorage.getItem("theme") || "light") as "light" | "dark";
+    setTheme(saved);
+    document.documentElement.dataset.theme = saved;
+  }, []);
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
@@ -29,6 +36,13 @@ export default function HeaderMenu({
     document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
   }, []);
+
+  const toggleTheme = () => {
+    const next = theme === "light" ? "dark" : "light";
+    setTheme(next);
+    localStorage.setItem("theme", next);
+    document.documentElement.dataset.theme = next;
+  };
 
   const switchLocale = (newLocale: string) => {
     const path = window.location.pathname;
@@ -54,6 +68,14 @@ export default function HeaderMenu({
           {userName && (
             <div className="header-menu-user">{userName}</div>
           )}
+
+          {/* Theme toggle row */}
+          <button className="header-menu-item header-menu-theme" onClick={toggleTheme}>
+            <span>{theme === "light" ? "🌙" : "☀️"}</span>
+            <span>{theme === "light" ? "深色模式" : "亮色模式"}</span>
+          </button>
+
+          <div className="header-menu-divider" />
 
           <div className="header-menu-section-label">語言 / Language</div>
           <div className="header-menu-lang-grid">

@@ -56,28 +56,10 @@ body {
 
 /* ── Dashboard Header ──────────────────────── */
 .dash-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-.dash-header-row1 {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 0.5rem;
-}
-.dash-header-row2 {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 0.5rem;
-}
-.dash-header-actions {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  flex-shrink: 0;
 }
 .dash-header-brand {
   display: flex;
@@ -510,6 +492,20 @@ body {
 }
 .header-menu-item:hover { background: var(--surface); }
 .header-menu-signout { color: var(--danger); }
+.header-menu-theme {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+/* ── Page Footer ───────────────────────────── */
+.page-footer {
+  text-align: center;
+  padding: 1.5rem 0 0.5rem;
+  font-size: 0.7rem;
+  color: var(--muted);
+  opacity: 0.6;
+}
 
 /* ── Empty State ───────────────────────────── */
 .empty-state {
