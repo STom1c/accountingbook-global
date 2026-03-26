@@ -63,61 +63,62 @@ export default function TransactionList({
   };
 
   if (transactions.length === 0) {
-    return <p style={{ color: "gray" }}>尚無記錄，試著新增一筆吧！</p>;
+    return <div className="empty-state">尚無記錄，試著新增一筆吧！</div>;
   }
 
   return (
-    <ul style={{ listStyle: "none", padding: 0 }}>
+    <ul className="trx-list">
       {transactions.map(trx => (
-        <li key={trx.id} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "1rem", borderBottom: "1px solid #eee" }}>
-          
+        <li key={trx.id} className="trx-item">
           {editingId === trx.id ? (
-            <div style={{ width: "100%", display: "flex", flexWrap: "wrap", gap: "0.5rem", alignItems: "center" }}>
-              <input 
-                type="text" 
-                value={editDesc} 
-                onChange={(e) => setEditDesc(e.target.value)} 
-                placeholder="用途描述"
-                style={{ flex: "1 1 150px", padding: "0.5rem", border: "1px solid #ccc", borderRadius: "4px" }}
-              />
-              <select 
-                value={editToId} 
-                onChange={(e) => setEditToId(e.target.value)} 
-                style={{ flex: "1 1 120px", padding: "0.5rem", border: "1px solid #ccc", borderRadius: "4px" }}
-              >
-                {toAccounts.map(a => <option key={a.id} value={a.id}>{a.displayName || a.name}</option>)}
-              </select>
-              <input 
-                type="number" 
-                value={editAmount} 
-                onChange={(e) => setEditAmount(e.target.value)} 
-                placeholder="金額"
-                style={{ flex: "0 1 100px", padding: "0.5rem", border: "1px solid #ccc", borderRadius: "4px" }}
-              />
-              <button disabled={loading} onClick={() => handleUpdate(trx)} style={{ cursor: "pointer", background: "#4CAF50", color: "white", border: "none", padding: "0.5rem 1rem", borderRadius: "4px", fontWeight: "bold" }}>{t("save")}</button>
-              <button disabled={loading} onClick={() => setEditingId(null)} style={{ cursor: "pointer", background: "#f44336", color: "white", border: "none", padding: "0.5rem 1rem", borderRadius: "4px", fontWeight: "bold" }}>{t("cancel")}</button>
+            <div className="trx-edit-row">
+              <div className="trx-edit-inputs">
+                <input
+                  type="text"
+                  value={editDesc}
+                  onChange={(e) => setEditDesc(e.target.value)}
+                  placeholder="用途描述"
+                  className="trx-edit-desc"
+                />
+                <select
+                  value={editToId}
+                  onChange={(e) => setEditToId(e.target.value)}
+                  className="trx-edit-cat"
+                >
+                  {toAccounts.map(a => <option key={a.id} value={a.id}>{a.displayName || a.name}</option>)}
+                </select>
+                <input
+                  type="number"
+                  value={editAmount}
+                  onChange={(e) => setEditAmount(e.target.value)}
+                  placeholder="金額"
+                  className="trx-edit-amt"
+                />
+              </div>
+              <div className="trx-edit-actions">
+                <button disabled={loading} onClick={() => handleUpdate(trx)} className="btn btn-primary" style={{ background: "var(--success)" }}>{t("save")}</button>
+                <button disabled={loading} onClick={() => setEditingId(null)} className="btn btn-secondary">{t("cancel")}</button>
+              </div>
             </div>
           ) : (
             <>
-              <div style={{ flex: 1 }}>
-                <strong>{trx.description}</strong>
-                <div style={{ fontSize: "0.85rem", color: "gray" }}>
+              <div className="trx-info">
+                <div className="trx-desc">{trx.description}</div>
+                <div className="trx-meta">
                   {String(trx.date).split("T")[0].replace(/-/g, "/")}
-                  &nbsp;({trx.postings?.find((p: any) => p.amount > 0)?.account?.displayName || trx.postings?.find((p: any) => p.amount > 0)?.account?.name})
+                  &nbsp;·&nbsp;
+                  {trx.postings?.find((p: any) => p.amount > 0)?.account?.displayName || trx.postings?.find((p: any) => p.amount > 0)?.account?.name}
                 </div>
               </div>
-              <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-                <div style={{ fontWeight: "bold", fontSize: "1.1rem" }}>
+              <div className="trx-right">
+                <div className="trx-amount">
                   ${Math.abs(Number(trx.postings[0].amount))}
                 </div>
-                <div>
-                  <button disabled={loading} onClick={() => startEdit(trx)} style={{ cursor: "pointer", marginRight: "0.5rem", padding: "0.3rem", border: "1px solid #ccc" }}>{t("edit")}</button>
-                  <button disabled={loading} onClick={() => handleDelete(trx.id)} style={{ cursor: "pointer", padding: "0.3rem", border: "1px solid #d9534f", color: "#d9534f" }}>{t("delete")}</button>
-                </div>
+                <button disabled={loading} onClick={() => startEdit(trx)} className="btn btn-icon">{t("edit")}</button>
+                <button disabled={loading} onClick={() => handleDelete(trx.id)} className="btn btn-icon btn-icon-danger">{t("delete")}</button>
               </div>
             </>
           )}
-
         </li>
       ))}
     </ul>

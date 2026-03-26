@@ -67,38 +67,38 @@ export default async function DashboardPage() {
   }));
 
   return (
-    <div style={{ maxWidth: "1000px", margin: "0 auto", padding: "2rem" }}>
-      <header style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "2rem" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: "0.8rem" }}>
-          <Image src="/logo.png" alt="Icon" width={36} height={36} style={{ borderRadius: "8px", boxShadow: "0 2px 5px rgba(0,0,0,0.1)", objectFit: "cover" }} />
-          <h1 style={{ margin: 0 }}>MoneyBook Dash</h1>
+    <div className="page-wrapper">
+      <header className="dash-header">
+        <div className="dash-header-brand">
+          <Image src="/logo.png" alt="Icon" width={32} height={32} style={{ borderRadius: "8px", objectFit: "cover" }} />
+          <h1>MoneyBook</h1>
         </div>
-        <div style={{ display: "flex", gap: "1rem", alignItems: "center", flexWrap: "wrap" }}>
+        <div className="dash-header-controls">
           <ThemeToggle />
           <LanguageSwitcher />
-          <a href="import" style={{ fontSize: "0.9rem", color: "#4285F4", border: "1px solid #4285F4", padding: "0.4rem 0.8rem", borderRadius: "20px", textDecoration: "none" }}>
-             📥 {navT("settings")} / Import Data
+          <a href="import" className="btn btn-link">
+            ↑ Import
           </a>
-          <span>{session.user.name}</span>
+          <span className="dash-user-name">{session.user.name}</span>
           <form action={async () => {
             "use server";
             await signOut({ redirectTo: "/" });
           }}>
-            <button type="submit" style={{ background: "transparent", border: "none", cursor: "pointer", fontSize: "0.9rem", color: "#d9534f", fontWeight: "bold" }}>
+            <button type="submit" className="btn btn-danger-text">
               {authT("signOut")}
             </button>
           </form>
         </div>
       </header>
-      
-      <main style={{ display: "flex", gap: "2rem", flexWrap: "wrap", alignItems: "flex-start" }}>
-        <div style={{ flex: "1 1 350px", display: "flex", flexDirection: "column", gap: "2rem" }}>
+
+      <main className="dash-main">
+        <div className="dash-left">
           <QuickAddTransaction ledgerId={ledger.id} accounts={plainAccounts} />
           <ExpensePieChart data={expenseSummary} />
         </div>
-        
-        <div style={{ flex: "2 1 450px" }}>
-          <h3>{dashT("recentTransactions")}</h3>
+
+        <div className="dash-right">
+          <h3 className="section-title">{dashT("recentTransactions")}</h3>
           <TransactionList transactions={plainTransactions} accounts={plainAccounts} />
         </div>
       </main>

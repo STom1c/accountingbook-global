@@ -192,109 +192,95 @@ export default function QuickAddTransaction({ ledgerId, accounts }: { ledgerId: 
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ background: "var(--background)", border: "1px solid #ccc", padding: "1.5rem", borderRadius: "8px", maxWidth: "400px" }}>
-      <h3 style={{ marginTop: 0 }}>快速入帳</h3>
-      <div style={{ marginBottom: "1.5rem" }}>
+    <form onSubmit={handleSubmit} className="card">
+      <h3 className="section-title">{t("quickAdd")}</h3>
+
+      {/* Scanner / Upload Section */}
+      <div className="form-group">
         {showScanner ? (
           <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-            <video 
-              ref={videoRef} 
-              autoPlay 
-              playsInline 
-              style={{ width: "100%", borderRadius: "8px", background: "#000", maxHeight: "300px", objectFit: "cover" }}
+            <video
+              ref={videoRef}
+              autoPlay
+              playsInline
+              style={{ width: "100%", borderRadius: "8px", background: "#000", maxHeight: "280px", objectFit: "cover" }}
             />
             <div style={{ display: "flex", gap: "0.5rem" }}>
-              <button 
-                type="button" 
-                onClick={captureFrame} 
-                style={{ flex: 1, padding: "0.8rem", background: "#4CAF50", color: "white", border: "none", borderRadius: "8px", cursor: "pointer", fontWeight: "bold" }}
-              >
+              <button type="button" onClick={captureFrame} className="btn btn-capture">
                 {t("capture")}
               </button>
-              <button 
-                type="button" 
-                onClick={stopScanner} 
-                style={{ padding: "0.8rem", background: "#f44336", color: "white", border: "none", borderRadius: "8px", cursor: "pointer", fontWeight: "bold" }}
-              >
+              <button type="button" onClick={stopScanner} className="btn btn-stop">
                 {t("cancelScanner")}
               </button>
             </div>
           </div>
+        ) : analyzing ? (
+          <div className="analyzing-badge">{t("analyzing")}</div>
         ) : (
           <div style={{ display: "flex", gap: "0.5rem", flexDirection: "column" }}>
-            <button 
-              type="button" 
-              disabled={analyzing || loading}
-              onClick={startScanner}
-              style={{
-                background: "rgba(66, 133, 244, 0.1)", color: "#4285F4", border: "1px dashed #4285F4",
-                padding: "0.8rem", width: "100%", borderRadius: "8px", cursor: "pointer", fontWeight: "bold",
-                display: "flex", justifyContent: "center", alignItems: "center", gap: "0.5rem"
-              }}
-            >
-              {analyzing ? t("analyzing") : t("startScanner")}
+            <button type="button" disabled={loading} onClick={startScanner} className="btn btn-scan">
+              📷 {t("startScanner")}
             </button>
-            <input 
-              type="file" 
-              accept="image/*" 
-              ref={fileInputRef} 
-              onChange={handleFileUpload} 
-              style={{ display: "none" }} 
-            />
-            <button 
-              type="button" 
-              disabled={analyzing || loading}
-              onClick={() => fileInputRef.current?.click()}
-              style={{
-                background: "transparent", color: "#666", border: "1px solid #ccc",
-                padding: "0.6rem", width: "100%", borderRadius: "8px", cursor: "pointer",
-                display: "flex", justifyContent: "center", alignItems: "center", gap: "0.5rem"
-              }}
-            >
+            <input type="file" accept="image/*" ref={fileInputRef} onChange={handleFileUpload} style={{ display: "none" }} />
+            <button type="button" disabled={loading} onClick={() => fileInputRef.current?.click()} className="btn btn-secondary">
               {t("uploadFile")}
             </button>
           </div>
         )}
       </div>
-      <div>
-        <label>{t("amount")}</label>
-        <input 
-          type="number" 
-          value={amount} 
-          onChange={e => setAmount(e.target.value)} 
-          required 
-          style={{ width: "100%", padding: "0.5rem", marginBottom: "1rem" }}
+
+      <div className="form-group">
+        <label className="form-label">{t("amount")}</label>
+        <input
+          type="number"
+          inputMode="decimal"
+          value={amount}
+          onChange={e => setAmount(e.target.value)}
+          required
+          className="form-input"
         />
       </div>
-      <div>
-        <label>{t("description")}</label>
-        <input 
-          type="text" 
-          value={desc} 
-          onChange={e => setDesc(e.target.value)} 
+
+      <div className="form-group">
+        <label className="form-label">{t("description")}</label>
+        <input
+          type="text"
+          value={desc}
+          onChange={e => setDesc(e.target.value)}
           onBlur={handleDescBlur}
-          required 
+          required
           placeholder="(Auto-categorize on blur)"
-          style={{ width: "100%", padding: "0.5rem", marginBottom: "1rem" }}
+          className="form-input"
         />
       </div>
-      <div>
-        <label>{t("from")}</label>
-        <select value={fromId} onChange={e => setFromId(e.target.value)} style={{ width: "100%", padding: "0.5rem", marginBottom: "1rem" }}>
-           {fromAccounts.map(a => <option key={a.id} value={a.id}>{a.displayName || a.name}</option>)}
+
+      <div className="form-group">
+        <label className="form-label">{t("from")}</label>
+        <select value={fromId} onChange={e => setFromId(e.target.value)} className="form-select">
+          {fromAccounts.map(a => <option key={a.id} value={a.id}>{a.displayName || a.name}</option>)}
         </select>
       </div>
-      <div>
-        <label>{t("to")}</label>
-        <select value={toId} onChange={e => setToId(e.target.value)} style={{ width: "100%", padding: "0.5rem", marginBottom: "1rem" }}>
+
+      <div className="form-group">
+        <label className="form-label">{t("to")}</label>
+        <select value={toId} onChange={e => setToId(e.target.value)} className="form-select">
           {toAccounts.map(a => <option key={a.id} value={a.id}>{a.displayName || a.name}</option>)}
-          <option value="_CUSTOM_">➕ Custom Category...</option>
+          <option value="_CUSTOM_">+ Custom Category...</option>
         </select>
         {toId === "_CUSTOM_" && (
-          <input type="text" placeholder="New category name" value={customToName} onChange={e => setCustomToName(e.target.value)} required style={{ width: "100%", padding: "0.5rem", marginBottom: "1rem", border: "1px solid #4285F4" }} />
+          <input
+            type="text"
+            placeholder="New category name"
+            value={customToName}
+            onChange={e => setCustomToName(e.target.value)}
+            required
+            className="form-input"
+            style={{ marginTop: "0.5rem", borderColor: "var(--primary)" }}
+          />
         )}
       </div>
-      <button type="submit" disabled={loading} style={{ background: "#4285F4", color: "white", padding: "0.8rem 1.5rem", border: "none", borderRadius: "4px", width: "100%" }}>
+
+      <button type="submit" disabled={loading} className="btn btn-primary">
         {loading ? "..." : t("addNew")}
       </button>
     </form>
