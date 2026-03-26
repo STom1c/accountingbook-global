@@ -1,0 +1,81 @@
+{
+  "common": {
+    "appName": "MoneyBook",
+    "login": "เข้าสู่ระบบ",
+    "logout": "ออกจากระบบ",
+    "save": "บันทึก",
+    "cancel": "ยกเลิก",
+    "delete": "ลบ",
+    "edit": "แก้ไข",
+    "settings": "การตั้งค่า",
+    "loading": "กำลังโหลด...",
+    "confirm": "ยืนยัน",
+    "back": "กลับ"
+  },
+  "nav": {
+    "dashboard": "แดชบอร์ด",
+    "transactions": "บัญชี",
+    "reports": "รายงาน",
+    "budgets": "งบประมาณ",
+    "settings": "การตั้งค่า"
+  },
+  "auth": {
+    "signInWithGoogle": "เข้าสู่ระบบด้วย Google",
+    "signInSubtitle": "เข้าสู่ระบบเพื่อเริ่มจัดการการเงินของคุณ",
+    "signOut": "ออกจากระบบ"
+  },
+  "transaction": {
+    "addNew": "เพิ่มรายการ",
+    "quickAdd": "เพิ่มด่วน",
+    "amount": "จำนวน",
+    "date": "วันที่",
+    "category": "หมวดหมู่",
+    "description": "รายละเอียด",
+    "memo": "บันทึก",
+    "from": "จาก",
+    "to": "ไปยัง",
+    "income": "รายรับ",
+    "expense": "รายจ่าย",
+    "transfer": "โอน",
+    "payee": "ผู้รับเงิน"
+  },
+  "category": {
+    "food": "อาหาร",
+    "transport": "การเดินทาง",
+    "housing": "ที่อยู่อาศัย",
+    "entertainment": "บันเทิง",
+    "medical": "การแพทย์",
+    "education": "การศึกษา",
+    "shopping": "การซื้อของ",
+    "salary": "เงินเดือน",
+    "investment": "การลงทุน",
+    "other": "อื่นๆ"
+  },
+  "account": {
+    "cash": "เงินสด",
+    "bankAccount": "บัญชีธนาคาร",
+    "creditCard": "บัตรเครดิต",
+    "promptpay": "PromptPay",
+    "truemoney": "TrueMoney Wallet"
+  },
+  "currency": {
+    "THB": "บาทไทย (฿)",
+    "USD": "ดอลลาร์สหรัฐ ($)"
+  },
+  "dashboard": {
+    "totalAssets": "สินทรัพย์รวม",
+    "monthlyExpense": "รายจ่ายเดือนนี้",
+    "monthlyIncome": "รายรับเดือนนี้",
+    "recentTransactions": "รายการล่าสุด",
+    "expenseByCategory": "รายจ่ายตามหมวดหมู่"
+  },
+  "settings": {
+    "language": "ภาษา",
+    "currency": "สกุลเงินเริ่มต้น",
+    "timezone": "เขตเวลา",
+    "theme": "ธีม",
+    "themeLight": "โหมดสว่าง",
+    "themeDark": "โหมดมืด",
+    "monthStartDay": "วันเริ่มต้นของเดือน"
+  }
+}

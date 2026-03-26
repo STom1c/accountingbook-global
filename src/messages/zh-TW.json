@@ -1,0 +1,85 @@
+{
+  "common": {
+    "appName": "MoneyBook",
+    "login": "登入",
+    "logout": "登出",
+    "save": "儲存",
+    "cancel": "取消",
+    "delete": "刪除",
+    "edit": "編輯",
+    "settings": "設定",
+    "loading": "載入中...",
+    "confirm": "確認",
+    "back": "返回"
+  },
+  "nav": {
+    "dashboard": "儀表板",
+    "transactions": "記帳",
+    "reports": "報表",
+    "budgets": "預算",
+    "settings": "設定"
+  },
+  "auth": {
+    "signInWithGoogle": "使用 Google 帳號登入",
+    "signInSubtitle": "登入以開始管理您的財務",
+    "signOut": "登出帳號"
+  },
+  "transaction": {
+    "addNew": "新增記錄",
+    "quickAdd": "快速入帳",
+    "amount": "金額",
+    "date": "日期",
+    "category": "分類",
+    "description": "描述",
+    "memo": "備注",
+    "from": "從",
+    "to": "至",
+    "income": "收入",
+    "expense": "支出",
+    "transfer": "轉帳",
+    "payee": "收付款對象"
+  },
+  "category": {
+    "food": "餐飲",
+    "transport": "交通",
+    "housing": "住居",
+    "entertainment": "娛樂",
+    "medical": "醫療",
+    "education": "教育",
+    "shopping": "購物",
+    "salary": "薪資",
+    "investment": "投資",
+    "other": "其他"
+  },
+  "account": {
+    "cash": "現金",
+    "bankAccount": "銀行帳戶",
+    "creditCard": "信用卡",
+    "easyCard": "悠遊卡",
+    "linePay": "LINE Pay"
+  },
+  "currency": {
+    "TWD": "新台幣 (NT$)",
+    "JPY": "日圓 (¥)",
+    "MYR": "馬來西亞令吉 (RM)",
+    "THB": "泰銖 (฿)",
+    "CNY": "人民幣 (¥)",
+    "USD": "美元 ($)"
+  },
+  "dashboard": {
+    "totalAssets": "總資產",
+    "monthlyExpense": "本月支出",
+    "monthlyIncome": "本月收入",
+    "recentTransactions": "近期記錄",
+    "expenseByCategory": "支出分類"
+  },
+  "settings": {
+    "language": "語言",
+    "currency": "預設貨幣",
+    "timezone": "時區",
+    "theme": "主題",
+    "themeLight": "亮色模式",
+    "themeDark": "深色模式",
+    "monthStartDay": "每月結算起始日"
+  }
+}

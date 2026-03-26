@@ -1,0 +1,84 @@
+{
+  "common": {
+    "appName": "MoneyBook",
+    "login": "登录",
+    "logout": "登出",
+    "save": "保存",
+    "cancel": "取消",
+    "delete": "删除",
+    "edit": "编辑",
+    "settings": "设置",
+    "loading": "加载中...",
+    "confirm": "确认",
+    "back": "返回"
+  },
+  "nav": {
+    "dashboard": "仪表板",
+    "transactions": "记账",
+    "reports": "报表",
+    "budgets": "预算",
+    "settings": "设置"
+  },
+  "auth": {
+    "signInWithGoogle": "使用 Google 账号登录",
+    "signInSubtitle": "登录以开始管理您的财务",
+    "signOut": "退出登录"
+  },
+  "transaction": {
+    "addNew": "新增记录",
+    "quickAdd": "快速记账",
+    "amount": "金额",
+    "date": "日期",
+    "category": "分类",
+    "description": "描述",
+    "memo": "备注",
+    "from": "从",
+    "to": "至",
+    "income": "收入",
+    "expense": "支出",
+    "transfer": "转账",
+    "payee": "收付款方"
+  },
+  "category": {
+    "food": "餐饮",
+    "transport": "交通",
+    "housing": "住房",
+    "entertainment": "娱乐",
+    "medical": "医疗",
+    "education": "教育",
+    "shopping": "购物",
+    "salary": "薪资",
+    "investment": "投资",
+    "other": "其他"
+  },
+  "account": {
+    "cash": "现金",
+    "bankAccount": "银行账户",
+    "creditCard": "信用卡",
+    "easyCard": "交通卡",
+    "alipay": "支付宝",
+    "wechatPay": "微信支付"
+  },
+  "currency": {
+    "CNY": "人民币 (¥)",
+    "TWD": "新台币 (NT$)",
+    "JPY": "日元 (¥)",
+    "USD": "美元 ($)"
+  },
+  "dashboard": {
+    "totalAssets": "总资产",
+    "monthlyExpense": "本月支出",
+    "monthlyIncome": "本月收入",
+    "recentTransactions": "近期记录",
+    "expenseByCategory": "支出分类"
+  },
+  "settings": {
+    "language": "语言",
+    "currency": "默认货币",
+    "timezone": "时区",
+    "theme": "主题",
+    "themeLight": "亮色模式",
+    "themeDark": "深色模式",
+    "monthStartDay": "每月结算起始日"
+  }
+}

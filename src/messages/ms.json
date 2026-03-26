@@ -1,0 +1,81 @@
+{
+  "common": {
+    "appName": "MoneyBook",
+    "login": "Log Masuk",
+    "logout": "Log Keluar",
+    "save": "Simpan",
+    "cancel": "Batal",
+    "delete": "Padam",
+    "edit": "Edit",
+    "settings": "Tetapan",
+    "loading": "Memuatkan...",
+    "confirm": "Sahkan",
+    "back": "Kembali"
+  },
+  "nav": {
+    "dashboard": "Papan Pemuka",
+    "transactions": "Rekod",
+    "reports": "Laporan",
+    "budgets": "Belanjawan",
+    "settings": "Tetapan"
+  },
+  "auth": {
+    "signInWithGoogle": "Log Masuk dengan Google",
+    "signInSubtitle": "Log masuk untuk mula mengurus kewangan anda",
+    "signOut": "Log Keluar"
+  },
+  "transaction": {
+    "addNew": "Tambah Rekod",
+    "quickAdd": "Tambah Pantas",
+    "amount": "Jumlah",
+    "date": "Tarikh",
+    "category": "Kategori",
+    "description": "Penerangan",
+    "memo": "Nota",
+    "from": "Dari",
+    "to": "Ke",
+    "income": "Pendapatan",
+    "expense": "Perbelanjaan",
+    "transfer": "Pindahkan",
+    "payee": "Penerima"
+  },
+  "category": {
+    "food": "Makanan",
+    "transport": "Pengangkutan",
+    "housing": "Tempat Tinggal",
+    "entertainment": "Hiburan",
+    "medical": "Perubatan",
+    "education": "Pendidikan",
+    "shopping": "Membeli-belah",
+    "salary": "Gaji",
+    "investment": "Pelaburan",
+    "other": "Lain-lain"
+  },
+  "account": {
+    "cash": "Tunai",
+    "bankAccount": "Akaun Bank",
+    "creditCard": "Kad Kredit",
+    "tng": "Touch 'n Go eWallet",
+    "grabpay": "GrabPay"
+  },
+  "currency": {
+    "MYR": "Ringgit Malaysia (RM)",
+    "USD": "Dolar AS ($)"
+  },
+  "dashboard": {
+    "totalAssets": "Jumlah Aset",
+    "monthlyExpense": "Perbelanjaan Bulan Ini",
+    "monthlyIncome": "Pendapatan Bulan Ini",
+    "recentTransactions": "Rekod Terbaru",
+    "expenseByCategory": "Perbelanjaan Mengikut Kategori"
+  },
+  "settings": {
+    "language": "Bahasa",
+    "currency": "Mata Wang Lalai",
+    "timezone": "Zon Waktu",
+    "theme": "Tema",
+    "themeLight": "Mod Cerah",
+    "themeDark": "Mod Gelap",
+    "monthStartDay": "Hari Mula Bulan"
+  }
+}

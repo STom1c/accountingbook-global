@@ -1,0 +1,82 @@
+{
+  "common": {
+    "appName": "MoneyBook",
+    "login": "ログイン",
+    "logout": "ログアウト",
+    "save": "保存",
+    "cancel": "キャンセル",
+    "delete": "削除",
+    "edit": "編集",
+    "settings": "設定",
+    "loading": "読み込み中...",
+    "confirm": "確認",
+    "back": "戻る"
+  },
+  "nav": {
+    "dashboard": "ダッシュボード",
+    "transactions": "家計簿",
+    "reports": "レポート",
+    "budgets": "予算",
+    "settings": "設定"
+  },
+  "auth": {
+    "signInWithGoogle": "Googleアカウントでログイン",
+    "signInSubtitle": "ログインして家計管理を始めましょう",
+    "signOut": "ログアウト"
+  },
+  "transaction": {
+    "addNew": "新規追加",
+    "quickAdd": "クイック入力",
+    "amount": "金額",
+    "date": "日付",
+    "category": "カテゴリ",
+    "description": "説明",
+    "memo": "メモ",
+    "from": "出金元",
+    "to": "入金先",
+    "income": "収入",
+    "expense": "支出",
+    "transfer": "振替",
+    "payee": "支払先"
+  },
+  "category": {
+    "food": "食費",
+    "transport": "交通費",
+    "housing": "住居費",
+    "entertainment": "娯楽費",
+    "medical": "医療費",
+    "education": "教育費",
+    "shopping": "買い物",
+    "salary": "給料",
+    "investment": "投資",
+    "other": "その他"
+  },
+  "account": {
+    "cash": "現金",
+    "bankAccount": "銀行口座",
+    "creditCard": "クレジットカード",
+    "suica": "Suica / PASMO",
+    "paypay": "PayPay"
+  },
+  "currency": {
+    "JPY": "日本円 (¥)",
+    "TWD": "台湾ドル (NT$)",
+    "USD": "米ドル ($)"
+  },
+  "dashboard": {
+    "totalAssets": "総資産",
+    "monthlyExpense": "今月の支出",
+    "monthlyIncome": "今月の収入",
+    "recentTransactions": "最近の取引",
+    "expenseByCategory": "支出カテゴリ"
+  },
+  "settings": {
+    "language": "言語",
+    "currency": "デフォルト通貨",
+    "timezone": "タイムゾーン",
+    "theme": "テーマ",
+    "themeLight": "ライトモード",
+    "themeDark": "ダークモード",
+    "monthStartDay": "月の開始日"
+  }
+}
