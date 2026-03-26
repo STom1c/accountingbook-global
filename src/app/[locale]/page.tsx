@@ -3,6 +3,7 @@ import { auth, signIn } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import Image from "next/image";
+import { version } from "../../../package.json";
 
 export default async function HomePage() {
   const t = await getTranslations("common");
@@ -16,7 +17,7 @@ export default async function HomePage() {
   }
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
+    <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh", position: "relative" }}>
       <header style={{ padding: "1rem 2rem", display: "flex", justifyContent: "flex-end" }}>
         <LanguageSwitcher />
       </header>
@@ -37,6 +38,10 @@ export default async function HomePage() {
           </button>
         </form>
       </main>
+
+      <footer style={{ textAlign: "center", padding: "1rem", color: "var(--muted, #94a3b8)", fontSize: "0.75rem" }}>
+        v{version}
+      </footer>
     </div>
   );
 }

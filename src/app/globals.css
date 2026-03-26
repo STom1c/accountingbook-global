@@ -77,6 +77,17 @@ body {
   font-weight: 700;
   white-space: nowrap;
 }
+.version-badge {
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--muted);
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
+  border-radius: 20px;
+  padding: 0.1rem 0.5rem;
+  white-space: nowrap;
+  align-self: center;
+}
 @media (min-width: 640px) {
   .dash-header-brand h1 { font-size: 1.5rem; }
 }

@@ -1,6 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import { auth, signOut } from "@/lib/auth";
 import { redirect } from "next/navigation";
+import { version } from "../../../../../package.json";
 import { createDefaultLedgerIfNotExists } from "@/lib/actions/ledger";
 import { getRecentTransactions, getExpenseSummary } from "@/lib/actions/transaction";
 import { prisma } from "@/lib/prisma";
@@ -74,6 +75,7 @@ export default async function DashboardPage() {
           <div className="dash-header-brand">
             <Image src="/logo.png" alt="Icon" width={32} height={32} style={{ borderRadius: "8px", objectFit: "cover" }} />
             <h1>MoneyBook</h1>
+            <span className="version-badge">v{version}</span>
           </div>
           <div className="dash-header-controls">
             <LanguageSwitcher />
