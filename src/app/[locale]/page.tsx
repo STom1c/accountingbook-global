@@ -2,6 +2,7 @@ import { getTranslations, getLocale } from "next-intl/server";
 import { auth, signIn } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import Image from "next/image";
 
 export default async function HomePage() {
   const t = await getTranslations("common");
@@ -21,7 +22,10 @@ export default async function HomePage() {
       </header>
       
       <main style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
-        <h1 style={{ fontSize: "3rem", marginBottom: "0.5rem" }}>{t("appName")} 🚀</h1>
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "1.5rem", marginBottom: "1rem" }}>
+          <Image src="/logo.png" alt="MoneyBook Global Icon" width={160} height={160} style={{ borderRadius: "32px", boxShadow: "0 10px 24px rgba(0,0,0,0.15)", objectFit: "cover" }} />
+          <h1 style={{ fontSize: "3.5rem", margin: 0 }}>{t("appName")}</h1>
+        </div>
         <p style={{ fontSize: "1.2rem", color: "gray", marginBottom: "3rem" }}>{authT("signInSubtitle")}</p>
         
         <form action={async () => {

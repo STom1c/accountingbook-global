@@ -9,6 +9,7 @@ import TransactionList from "@/components/TransactionList";
 import ThemeToggle from "@/components/ThemeToggle";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import ExpensePieChart from "@/components/ExpensePieChart";
+import Image from "next/image";
 
 export default async function DashboardPage() {
   const session = await auth();
@@ -68,7 +69,10 @@ export default async function DashboardPage() {
   return (
     <div style={{ maxWidth: "1000px", margin: "0 auto", padding: "2rem" }}>
       <header style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "2rem" }}>
-        <h1>MoneyBook Dash 🚀</h1>
+        <div style={{ display: "flex", alignItems: "center", gap: "0.8rem" }}>
+          <Image src="/logo.png" alt="Icon" width={36} height={36} style={{ borderRadius: "8px", boxShadow: "0 2px 5px rgba(0,0,0,0.1)", objectFit: "cover" }} />
+          <h1 style={{ margin: 0 }}>MoneyBook Dash</h1>
+        </div>
         <div style={{ display: "flex", gap: "1rem", alignItems: "center", flexWrap: "wrap" }}>
           <ThemeToggle />
           <LanguageSwitcher />
