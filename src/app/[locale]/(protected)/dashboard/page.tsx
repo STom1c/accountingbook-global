@@ -69,25 +69,26 @@ export default async function DashboardPage() {
   return (
     <div className="page-wrapper">
       <header className="dash-header">
-        <div className="dash-header-brand">
-          <Image src="/logo.png" alt="Icon" width={32} height={32} style={{ borderRadius: "8px", objectFit: "cover" }} />
-          <h1>MoneyBook</h1>
-        </div>
-        <div className="dash-header-controls">
-          <ThemeToggle />
-          <LanguageSwitcher />
-          <a href="import" className="btn btn-link">
-            ↑ Import
-          </a>
-          <span className="dash-user-name">{session.user.name}</span>
-          <form action={async () => {
-            "use server";
-            await signOut({ redirectTo: "/" });
-          }}>
-            <button type="submit" className="btn btn-danger-text">
-              {authT("signOut")}
-            </button>
-          </form>
+        {/* Row 1: Brand + compact controls */}
+        <div className="dash-header-row1">
+          <div className="dash-header-brand">
+            <Image src="/logo.png" alt="Icon" width={32} height={32} style={{ borderRadius: "8px", objectFit: "cover" }} />
+            <h1>MoneyBook</h1>
+          </div>
+          <div className="dash-header-controls">
+            <LanguageSwitcher />
+            <ThemeToggle />
+            <a href="import" className="dash-import-btn" title="Import Data">↑</a>
+            <span className="dash-user-name">{session.user.name}</span>
+            <form action={async () => {
+              "use server";
+              await signOut({ redirectTo: "/" });
+            }}>
+              <button type="submit" className="btn btn-danger-text">
+                {authT("signOut")}
+              </button>
+            </form>
+          </div>
         </div>
       </header>
 

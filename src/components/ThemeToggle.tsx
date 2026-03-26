@@ -21,19 +21,13 @@ export default function ThemeToggle() {
   };
 
   return (
-    <button 
+    <button
       onClick={toggleTheme}
-      style={{
-        background: "transparent",
-        border: "1px solid var(--foreground)",
-        color: "var(--foreground)",
-        padding: "0.4rem 0.8rem",
-        borderRadius: "20px",
-        cursor: "pointer",
-        fontSize: "0.9rem"
-      }}
+      title={theme === "light" ? t("themeLight") : t("themeDark")}
+      aria-label={theme === "light" ? t("themeLight") : t("themeDark")}
+      className="btn-theme-toggle"
     >
-      {theme === "light" ? `🌙 ${t("themeLight")}` : `☀️ ${t("themeDark")}`}
+      {theme === "light" ? "🌙" : "☀️"}
     </button>
   );
 }
