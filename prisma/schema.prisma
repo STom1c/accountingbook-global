@@ -123,7 +123,8 @@ model Transaction {
   category    Category? @relation(fields: [categoryId], references: [id])
   isRecurring Boolean   @default(false)
   tags        String[]
-  receiptUrl  String?   // OCR 收據圖片 URL (MinIO)
+  receiptUrl     String?   // OCR 收據圖片 URL (MinIO)
+  invoiceNumber  String?   // 發票號碼 / Receipt number
   ledgerId    String
   ledger      Ledger    @relation(fields: [ledgerId], references: [id], onDelete: Cascade)
   postings    Posting[]
