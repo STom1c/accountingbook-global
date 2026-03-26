@@ -1,93 +1,85 @@
 # MoneyBook Global — 實作進度記錄 (Implementation Progress)
 
-> 專案路徑：`~/py_projects/my-accounting-app`  
-> 部署目標：Zeabur (自帶伺服器 2C4G 60G) + 網域 `icq6161620.dpdns.org`  
+> 專案路徑：`~/py_projects/my-accounting-app`
+> 部署目標：Zeabur (自帶伺服器 2C4G) + 網域 `icq6161620.dpdns.org`
 > 最後更新：2026-03-26
+> 目前版本：**v1.0.0**
 
 ---
 
 ## 進度總覽
 
+| Phase | 內容 | 狀態 |
+|---|---|---|
 | Phase 1 | 專案初始化、DB Schema、Google SSO、多語系 | ✅ 已完成 |
-| Phase 2 | 雙重簿記 API、快速入帳、圖表報表、深色模式 | 🔄 進行中 |
-| Phase 3 | OCR 收據掃描、多人共享帳本 | ⏳ 待開始 |
-| Phase 4 | MyAB CSV 匯入、報表匯出 | ⏳ 待開始 |
+| Phase 2 | 雙重簿記 API、快速入帳、圖表報表、深色模式 | ✅ 已完成 |
+| Phase 3 | OCR 收據掃描、AI 自動分類、多語系細化 | ✅ 已完成 |
+| Phase 4 | MyAB CSV 匯入、手機 UI 重構、Zeabur 部署 | ✅ 已完成 |
 
 ---
 
-## Phase 1：底層基礎建置
+## Phase 1：底層基礎建置 ✅
 
-### Step 1.1 — 初始化 Next.js 14 專案 ✅
-- Next.js 14 (App Router, TypeScript, ESLint) 成功初始化，342 packages
-
-### Step 1.2 — 安裝核心相依套件 ✅
-- `next-auth@beta`, `@auth/prisma-adapter`, `@prisma/client`, `next-intl`, `chart.js`, `react-chartjs-2`, `csv-parse`
-- 414 packages total, 0 vulnerabilities
-
-### Step 1.3 — Prisma Schema 設計與驗證 ✅
-- `The schema at prisma/schema.prisma is valid 🚀`
-- Prisma Client v6.19.2 生成成功
-- 模型：User, Account, Session, VerificationToken, Ledger, FinancialAccount, Transaction, Posting, Category, Budget, TransactionTemplate
-
-### Step 1.4 — 核心設定檔建立 ✅
-- `src/lib/prisma.ts` — Prisma Client 單例
-- `src/lib/auth.ts` — NextAuth v5 + Google Provider + PrismaAdapter
-- `src/app/api/auth/[...nextauth]/route.ts` — NextAuth API Route
+- Next.js 16 (App Router, TypeScript) 初始化
+- Prisma Schema：User, Ledger, FinancialAccount, Transaction, Posting, Category, Budget, TransactionTemplate
+- NextAuth v5 + Google OAuth + PrismaAdapter
+- next-intl 多語系路由 (`zh-TW`, `zh-CN`, `ja`, `ms`, `th`)
 - `src/middleware.ts` — next-intl 語系路由攔截
-- `src/i18n/routing.ts` — 語系定義 (zh-TW, zh-CN, ja, ms, th)
-- `src/i18n/request.ts` — Server-side 語系載入
-- `next.config.ts` — Next.js + next-intl plugin 設定
-- `.env.example` — 環境變數範本
-
-### Step 1.5 — 多語系翻譯檔 ✅
-- 繁體中文 (zh-TW)、簡體中文 (zh-CN)、日文 (ja)、馬來文 (ms)、泰文 (th)
-- 涵蓋 key 群組：common, nav, auth, transaction, category, account, currency, dashboard, settings
-
-### Step 1.6 — .env.local 設定 ✅
-- ✅ Google Cloud Console Client ID 
-- ✅ Google Cloud Console Client Secret
-- ✅ NEXTAUTH_SECRET 自動生成完成
-- ✅ Zeabur PostgreSQL `DATABASE_URL` 已取得
-
-### Step 1.7 — 本地開發驗證 ⏳
-- ✅ `npx prisma db push` 執行完成，架構同步成功
-- 👉 `npm run dev` 即可啟動本地開發伺服器
-
-### Step 1.8 — Zeabur 部署 ⏳
-- 待本地驗證通過，且建立 GitHub Repo 後執行
+- 五語系翻譯檔 (common, nav, auth, transaction, category, account, currency, dashboard, settings)
+- `.env.example` 環境變數範本
 
 ## Phase 2：日常記帳最佳化與報表體驗 ✅
-- [x] **雙重簿記核心 API 建置** (建立 Transaction, 確保 Debit/Credit 平衡)
-- [x] **快速入帳介面** (建立 QuickAddTransaction 表單)
-- [x] **分類管理與熱修復** (自訂大數據庫分類與防呆自動收束)
-- [x] **記錄刪除與編輯** (確保異動時依然維持簿記平衡與關聯資料轉換)
-- [x] **圖表分析整合** (Chart.js 支出圓餅圖 `ExpensePieChart`)
-- [x] **深色模式** (Vanilla CSS Variables `data-theme='dark'` 切換)
 
----
+- 雙重簿記核心 API (Transaction + Posting，Debit/Credit 平衡驗證)
+- QuickAddTransaction 快速入帳表單
+- 記錄刪除與編輯 (編輯維持簿記平衡)
+- Chart.js 支出圓餅圖 (ExpensePieChart)
+- 深色模式 (CSS Variables `data-theme="dark"`)
+- 自訂分類建立 (addFinancialAccount)
 
-## Phase 3：A.I. 智慧與跨國支援 (進度更新) ✅
-- [x] **A.I. 收據掃描** (整合 HTML5 Camera App + Gemini 1.5 Flash Vision 解析多國發票)
-- [x] **全域多語系翻譯** (使用 `next-intl` 實作：繁、簡、日、泰、馬)
-- [x] **解決 Next.js 15 Promise `params` 導致的 404 Undefined 錯誤**
-- [x] **解決 Prisma 併發 `P2025` 刪除鎖死問題**
-- [x] **解決 React Client Router 吞掉路由導致無效點擊的問題 (`window.location.href` 強制導向)**
-- [x] **首頁登入與跨國語言切換無縫串接 (跳過 NextAuth 預設畫面)**
-  
----
+## Phase 3：A.I. 智慧與跨國支援 ✅
 
-## 待執行手動步驟提醒事項 (To Do)
+- HTML5 Camera live 取景掃描 + 圖片上傳 → `/api/ocr`
+- Gemini 1.5 Flash Vision OCR：多國語言收據解析（金額、描述、分類）
+- `/api/categorize` — 描述文字 AI 自動分類
+- invoiceNumber 欄位新增至 Transaction model
+- 語系切換 Client-side 強制導向（解決 Router cache 問題）
+- 首次登入自動建立預設帳本與財務科目
 
-| 任務 | 說明 | 狀態 |
-|---|---|---|
-| **建立 GitHub Repo** | 請在您的 GitHub 建立新倉庫（無需 README），我會為您推播程式碼。 | ✅ 已完成 |
-| **部署 Zeabur PostgreSQL** | 請於 [Zeabur 控制台](https://dash.zeabur.com) → 新建專案 → 添加服務 (Marketplace) → 選 PostgreSQL，完成後將 `DATABASE_URL` 提供給我。 | ❓ 等待執行 |
+## Phase 4：部署、匯入與 UI 精修 ✅
+
+### Zeabur 雲端部署
+- Dockerfile：`prisma db push --skip-generate && npm start`
+- `zbpack.json`：`{ "build_type": "dockerfile" }`
+- Dummy DATABASE_URL 解決 build-time Prisma generate 問題
+- `AUTH_TRUST_HOST=true` 解決 NextAuth UntrustedHost
+- GitHub webhook 連結（自動觸發 redeploy）
+
+### Cloudflare Tunnel 路由
+- 同一 domain `icq6161620.dpdns.org` 分流：
+  - LINE relay paths → `localhost:8010`
+  - 其餘 → Zeabur ingress `localhost:80`
+
+### MyAB CSV 匯入
+- Import Wizard (`/import`)，Big5 / UTF-8 雙編碼支援
+- 欄位對應介面，批次寫入 Postings
+
+### 手機 UI 重構
+- Inter 字型 + CSS Variables 設計系統
+- `globals.css` 完整 CSS class 系統（告別 inline style）
+- 8pt 間距網格，44px 觸控目標
+- Header：Logo + ⋯ 下拉選單（語言、深色模式、Import、登出）
+- 版本號 footer
 
 ---
 
 ## 問題記錄 (Issues Log)
 
-| 時間 | 問題 | 解決方式 | 狀態 |
-|---|---|---|---|
-| 2026-03-26 | `public/` `src/` 空目錄導致 create-next-app 衝突 | `rmdir public src` 後重新執行 | ✅ 已解決 |
-| 2026-03-26 | eslint-visitor-keys Node v23 engine warning | 奇數版本相容性問題，不影響運行 | ✅ 可忽略 |
+| 時間 | 問題 | 解決方式 |
+|---|---|---|
+| 2026-03-26 | Prisma generate 需要 DATABASE_URL | Dockerfile 注入 dummy URL |
+| 2026-03-26 | NextAuth UntrustedHost | 加入 AUTH_TRUST_HOST=true |
+| 2026-03-26 | Cloudflare Tunnel 攔截全部流量導致 404 | 拆分 ingress 路由 |
+| 2026-03-26 | next-intl middleware 不生效 | 將 proxy.ts 改名為 middleware.ts |
+| 2026-03-26 | GitHub webhook 未建立，Zeabur 不自動重建 | 重新連結 GitHub repo |
+| 2026-03-26 | Header 按鈕手機版換行跑版 | 改為 ⋯ 下拉選單架構 |
