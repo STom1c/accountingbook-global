@@ -8,10 +8,8 @@
 
 ## 進度總覽
 
-| Phase | 描述 | 狀態 |
-|---|---|---|
-| Phase 1 | 專案初始化、DB Schema、Google SSO、多語系 | 🔄 進行中 |
-| Phase 2 | 快速入帳、圖表報表、深色模式 | ⏳ 待開始 |
+| Phase 1 | 專案初始化、DB Schema、Google SSO、多語系 | ✅ 已完成 |
+| Phase 2 | 雙重簿記 API、快速入帳、圖表報表、深色模式 | 🔄 進行中 |
 | Phase 3 | OCR 收據掃描、多人共享帳本 | ⏳ 待開始 |
 | Phase 4 | MyAB CSV 匯入、報表匯出 | ⏳ 待開始 |
 
@@ -45,27 +43,35 @@
 - 繁體中文 (zh-TW)、簡體中文 (zh-CN)、日文 (ja)、馬來文 (ms)、泰文 (th)
 - 涵蓋 key 群組：common, nav, auth, transaction, category, account, currency, dashboard, settings
 
-### Step 1.6 — .env.local 設定 ⚠️ (等待使用者)
-- [ ] Google Cloud Console Client ID
-- [ ] Google Cloud Console Client Secret
-- [ ] Zeabur PostgreSQL DATABASE_URL
-- NEXTAUTH_SECRET 會自動生成
+### Step 1.6 — .env.local 設定 ✅
+- ✅ Google Cloud Console Client ID 
+- ✅ Google Cloud Console Client Secret
+- ✅ NEXTAUTH_SECRET 自動生成完成
+- ✅ Zeabur PostgreSQL `DATABASE_URL` 已取得
 
 ### Step 1.7 — 本地開發驗證 ⏳
-- 待 env 設定後執行 `npm run dev` 測試
+- ✅ `npx prisma db push` 執行完成，架構同步成功
+- 👉 `npm run dev` 即可啟動本地開發伺服器
 
 ### Step 1.8 — Zeabur 部署 ⏳
-- 待本地驗證通過後執行
+- 待本地驗證通過，且建立 GitHub Repo 後執行
 
+## Phase 2：日常記帳最佳化與報表體驗 ✅
+- [x] **雙重簿記核心 API 建置** (建立 Transaction, 確保 Debit/Credit 平衡)
+- [x] **快速入帳介面** (建立 QuickAddTransaction 表單)
+- [x] **分類管理與熱修復** (自訂大數據庫分類與防呆自動收束)
+- [x] **記錄刪除與編輯** (確保異動時依然維持簿記平衡與關聯資料轉換)
+- [x] **圖表分析整合** (Chart.js 支出圓餅圖 `ExpensePieChart`)
+- [x] **深色模式** (Vanilla CSS Variables `data-theme='dark'` 切換)
+  
 ---
 
-## 待決議事項 (Pending Decisions)
+## 待執行手動步驟提醒事項 (To Do)
 
-| # | 問題 | 狀態 |
+| 任務 | 說明 | 狀態 |
 |---|---|---|
-| 1 | Google Cloud OAuth Client ID & Secret | ❓ 等待使用者 |
-| 2 | Zeabur PostgreSQL DATABASE_URL | ❓ 等待使用者 |
-| 3 | GitHub Repo 是否已存在？ | ❓ 等待確認 |
+| **建立 GitHub Repo** | 請在您的 GitHub 建立新倉庫（無需 README），我會為您推播程式碼。 | ✅ 已完成 |
+| **部署 Zeabur PostgreSQL** | 請於 [Zeabur 控制台](https://dash.zeabur.com) → 新建專案 → 添加服務 (Marketplace) → 選 PostgreSQL，完成後將 `DATABASE_URL` 提供給我。 | ❓ 等待執行 |
 
 ---
 
