@@ -13,8 +13,8 @@ COPY . .
 
 # Generate Prisma Client and build the Next.js app 
 # (Requires no DB connection at build phase)
-RUN npx prisma generate
-RUN npm run build
+RUN DATABASE_URL="postgresql://dummy:dummy@localhost:5432/dummy" npx prisma generate
+RUN DATABASE_URL="postgresql://dummy:dummy@localhost:5432/dummy" npm run build
 
 # Set production environment state
 ENV NODE_ENV=production
