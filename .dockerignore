@@ -1,0 +1,11 @@
+.git
+node_modules
+.next
+.env
+.env.local
+.agent_dev.log
+*.db
+*.sqlite
+.DS_Store
+README.md
+CHANGELOG.md
