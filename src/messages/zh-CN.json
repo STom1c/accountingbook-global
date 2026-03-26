@@ -30,14 +30,19 @@
     "amount": "金额",
     "date": "日期",
     "category": "分类",
-    "description": "描述",
+    "description": "描述 (例：午餐便当)",
     "memo": "备注",
-    "from": "从",
-    "to": "至",
+    "from": "支付方式 (从哪个账户扣款)",
+    "to": "支出类别 (钱花去哪里)",
     "income": "收入",
     "expense": "支出",
     "transfer": "转账",
-    "payee": "收付款方"
+    "payee": "收付款方",
+    "startScanner": "📱 开启镜头：LIVE 取景扫描",
+    "analyzing": "🧠 AI 视觉 OCR 正在疯狂解码中...",
+    "capture": "📸 提取画面并分析",
+    "cancelScanner": "取消扫描",
+    "uploadFile": "📂 上传收据/发票图片 (电脑版)"
   },
   "category": {
     "food": "餐饮",

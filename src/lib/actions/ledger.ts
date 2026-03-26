@@ -160,7 +160,11 @@ export async function provisionAndCleanStandardCategories(ledgerId: string, user
     // 如果這個 Account 不在「極簡標準清單」內，而且目前沒有任何交易紀錄，就直接刪光！
     for (const acc of afterMigrateAccounts) {
       if (!standardSet.has(acc.name) && acc._count.postings === 0) {
-        await prisma.financialAccount.delete({ where: { id: acc.id } });
+        try {
+          await prisma.financialAccount.delete({ where: { id: acc.id } });
+        } catch (err: any) {
+          if (err.code !== 'P2025') throw err; // Ignore No record was found for a delete
+        }
       }
     }
   }

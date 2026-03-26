@@ -9,7 +9,7 @@ export default function QuickAddTransaction({ ledgerId, accounts }: { ledgerId: 
   const [amount, setAmount] = useState("");
   const [desc, setDesc] = useState("");
   const [loading, setLoading] = useState(false);
-  const authT = useTranslations("auth");
+  const t = useTranslations("transaction");
   const fileInputRef = useRef<HTMLInputElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const streamRef = useRef<MediaStream | null>(null);
@@ -209,14 +209,14 @@ export default function QuickAddTransaction({ ledgerId, accounts }: { ledgerId: 
                 onClick={captureFrame} 
                 style={{ flex: 1, padding: "0.8rem", background: "#4CAF50", color: "white", border: "none", borderRadius: "8px", cursor: "pointer", fontWeight: "bold" }}
               >
-                📸 擷取畫面並分析
+                {t("capture")}
               </button>
               <button 
                 type="button" 
                 onClick={stopScanner} 
                 style={{ padding: "0.8rem", background: "#f44336", color: "white", border: "none", borderRadius: "8px", cursor: "pointer", fontWeight: "bold" }}
               >
-                取消
+                {t("cancelScanner")}
               </button>
             </div>
           </div>
@@ -232,7 +232,7 @@ export default function QuickAddTransaction({ ledgerId, accounts }: { ledgerId: 
                 display: "flex", justifyContent: "center", alignItems: "center", gap: "0.5rem"
               }}
             >
-              {analyzing ? "🧠 視覺 OCR 正在瘋狂解碼中..." : "📱 開啟鏡頭：LIVE 取景掃描"}
+              {analyzing ? t("analyzing") : t("startScanner")}
             </button>
             <input 
               type="file" 
@@ -251,13 +251,13 @@ export default function QuickAddTransaction({ ledgerId, accounts }: { ledgerId: 
                 display: "flex", justifyContent: "center", alignItems: "center", gap: "0.5rem"
               }}
             >
-              📂 上傳現有發票圖片 (測試用)
+              {t("uploadFile")}
             </button>
           </div>
         )}
       </div>
       <div>
-        <label>金額</label>
+        <label>{t("amount")}</label>
         <input 
           type="number" 
           value={amount} 
@@ -267,43 +267,35 @@ export default function QuickAddTransaction({ ledgerId, accounts }: { ledgerId: 
         />
       </div>
       <div>
-        <label>用途描述 (例如：午餐便當)</label>
+        <label>{t("description")}</label>
         <input 
           type="text" 
           value={desc} 
           onChange={e => setDesc(e.target.value)} 
           onBlur={handleDescBlur}
           required 
-          placeholder="輸入完畢若移開游標，AI 會自動幫您分類！"
+          placeholder="(Auto-categorize on blur)"
           style={{ width: "100%", padding: "0.5rem", marginBottom: "1rem" }}
         />
       </div>
       <div>
-        <label>資金來源 (支付方式)</label>
+        <label>{t("from")}</label>
         <select value={fromId} onChange={e => setFromId(e.target.value)} style={{ width: "100%", padding: "0.5rem", marginBottom: "1rem" }}>
-          {fromAccounts.map(a => <option key={a.id} value={a.id}>{a.name}</option>)}
+           {fromAccounts.map(a => <option key={a.id} value={a.id}>{a.displayName || a.name}</option>)}
         </select>
       </div>
       <div>
-        <label>流向 (支出類別)</label>
+        <label>{t("to")}</label>
         <select value={toId} onChange={e => setToId(e.target.value)} style={{ width: "100%", padding: "0.5rem", marginBottom: "1rem" }}>
-          {toAccounts.map(a => <option key={a.id} value={a.id}>{a.name}</option>)}
-          <option value="_CUSTOM_">➕ 新增自訂類別...</option>
+          {toAccounts.map(a => <option key={a.id} value={a.id}>{a.displayName || a.name}</option>)}
+          <option value="_CUSTOM_">➕ Custom Category...</option>
         </select>
-        
         {toId === "_CUSTOM_" && (
-          <input 
-            type="text" 
-            placeholder="請輸入新類別名稱" 
-            value={customToName} 
-            onChange={e => setCustomToName(e.target.value)} 
-            required 
-            style={{ width: "100%", padding: "0.5rem", marginBottom: "1rem", border: "1px solid #4285F4" }}
-          />
+          <input type="text" placeholder="New category name" value={customToName} onChange={e => setCustomToName(e.target.value)} required style={{ width: "100%", padding: "0.5rem", marginBottom: "1rem", border: "1px solid #4285F4" }} />
         )}
       </div>
       <button type="submit" disabled={loading} style={{ background: "#4285F4", color: "white", padding: "0.8rem 1.5rem", border: "none", borderRadius: "4px", width: "100%" }}>
-        {loading ? "處理中..." : "新增記錄"}
+        {loading ? "..." : t("addNew")}
       </button>
     </form>
   );

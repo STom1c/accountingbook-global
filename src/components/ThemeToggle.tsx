@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 
 export default function ThemeToggle() {
+  const t = useTranslations("settings");
   const [theme, setTheme] = useState<"light" | "dark">("light");
 
   useEffect(() => {
@@ -31,7 +33,7 @@ export default function ThemeToggle() {
         fontSize: "0.9rem"
       }}
     >
-      {theme === "light" ? "🌙 淺色模式" : "☀️ 深色模式"}
+      {theme === "light" ? `🌙 ${t("themeLight")}` : `☀️ ${t("themeDark")}`}
     </button>
   );
 }

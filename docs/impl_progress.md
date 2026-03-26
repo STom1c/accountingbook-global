@@ -63,6 +63,16 @@
 - [x] **記錄刪除與編輯** (確保異動時依然維持簿記平衡與關聯資料轉換)
 - [x] **圖表分析整合** (Chart.js 支出圓餅圖 `ExpensePieChart`)
 - [x] **深色模式** (Vanilla CSS Variables `data-theme='dark'` 切換)
+
+---
+
+## Phase 3：A.I. 智慧與跨國支援 (進度更新) ✅
+- [x] **A.I. 收據掃描** (整合 HTML5 Camera App + Gemini 1.5 Flash Vision 解析多國發票)
+- [x] **全域多語系翻譯** (使用 `next-intl` 實作：繁、簡、日、泰、馬)
+- [x] **解決 Next.js 15 Promise `params` 導致的 404 Undefined 錯誤**
+- [x] **解決 Prisma 併發 `P2025` 刪除鎖死問題**
+- [x] **解決 React Client Router 吞掉路由導致無效點擊的問題 (`window.location.href` 強制導向)**
+- [x] **首頁登入與跨國語言切換無縫串接 (跳過 NextAuth 預設畫面)**
   
 ---
 

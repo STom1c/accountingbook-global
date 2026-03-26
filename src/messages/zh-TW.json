@@ -30,14 +30,19 @@
     "amount": "金額",
     "date": "日期",
     "category": "分類",
-    "description": "描述",
+    "description": "描述 (例：午餐便當)",
     "memo": "備注",
-    "from": "從",
-    "to": "至",
+    "from": "支付方式 (從哪個帳戶扣款)",
+    "to": "支出類別 (錢花去哪裡)",
     "income": "收入",
     "expense": "支出",
     "transfer": "轉帳",
-    "payee": "收付款對象"
+    "payee": "收付款對象",
+    "startScanner": "📱 開啟鏡頭：LIVE 取景掃描",
+    "analyzing": "🧠 AI 視覺 OCR 正在瘋狂解碼中...",
+    "capture": "📸 擷取畫面並分析",
+    "cancelScanner": "取消掃描",
+    "uploadFile": "📂 上傳收據/發票圖片 (電腦版)"
   },
   "category": {
     "food": "餐飲",

@@ -32,12 +32,17 @@
     "category": "Kategori",
     "description": "Penerangan",
     "memo": "Nota",
-    "from": "Dari",
-    "to": "Ke",
+    "from": "Dari (Kaedah Pembayaran)",
+    "to": "Ke (Kategori Perbelanjaan)",
     "income": "Pendapatan",
     "expense": "Perbelanjaan",
     "transfer": "Pindahkan",
-    "payee": "Penerima"
+    "payee": "Penerima",
+    "startScanner": "📱 Buka Kamera: Imbas Resit",
+    "analyzing": "🧠 AI Sedang Menganalisis Gambar...",
+    "capture": "📸 Tangkap & Analisis",
+    "cancelScanner": "Batal",
+    "uploadFile": "📂 Muat Naik Gambar Resit"
   },
   "category": {
     "food": "Makanan",

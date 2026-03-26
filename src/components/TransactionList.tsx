@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { deleteTransaction, updateTransaction } from "@/lib/actions/transaction";
+import { useTranslations } from "next-intl";
 
 export default function TransactionList({
   transactions,
@@ -10,6 +11,7 @@ export default function TransactionList({
   transactions: any[];
   accounts: any[];
 }) {
+  const t = useTranslations("common");
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editAmount, setEditAmount] = useState("");
   const [editDesc, setEditDesc] = useState("");
@@ -83,7 +85,7 @@ export default function TransactionList({
                 onChange={(e) => setEditToId(e.target.value)} 
                 style={{ flex: "1 1 120px", padding: "0.5rem", border: "1px solid #ccc", borderRadius: "4px" }}
               >
-                {toAccounts.map(a => <option key={a.id} value={a.id}>{a.name}</option>)}
+                {toAccounts.map(a => <option key={a.id} value={a.id}>{a.displayName || a.name}</option>)}
               </select>
               <input 
                 type="number" 
@@ -92,8 +94,8 @@ export default function TransactionList({
                 placeholder="金額"
                 style={{ flex: "0 1 100px", padding: "0.5rem", border: "1px solid #ccc", borderRadius: "4px" }}
               />
-              <button disabled={loading} onClick={() => handleUpdate(trx)} style={{ cursor: "pointer", background: "#4CAF50", color: "white", border: "none", padding: "0.5rem 1rem", borderRadius: "4px", fontWeight: "bold" }}>儲存</button>
-              <button disabled={loading} onClick={() => setEditingId(null)} style={{ cursor: "pointer", background: "#f44336", color: "white", border: "none", padding: "0.5rem 1rem", borderRadius: "4px", fontWeight: "bold" }}>取消</button>
+              <button disabled={loading} onClick={() => handleUpdate(trx)} style={{ cursor: "pointer", background: "#4CAF50", color: "white", border: "none", padding: "0.5rem 1rem", borderRadius: "4px", fontWeight: "bold" }}>{t("save")}</button>
+              <button disabled={loading} onClick={() => setEditingId(null)} style={{ cursor: "pointer", background: "#f44336", color: "white", border: "none", padding: "0.5rem 1rem", borderRadius: "4px", fontWeight: "bold" }}>{t("cancel")}</button>
             </div>
           ) : (
             <>
@@ -101,8 +103,7 @@ export default function TransactionList({
                 <strong>{trx.description}</strong>
                 <div style={{ fontSize: "0.85rem", color: "gray" }}>
                   {String(trx.date).split("T")[0].replace(/-/g, "/")}
-                  {/* 可顯示科目資訊 */}
-                  &nbsp;({trx.postings?.find((p: any) => p.amount > 0)?.account?.name})
+                  &nbsp;({trx.postings?.find((p: any) => p.amount > 0)?.account?.displayName || trx.postings?.find((p: any) => p.amount > 0)?.account?.name})
                 </div>
               </div>
               <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
@@ -110,8 +111,8 @@ export default function TransactionList({
                   ${Math.abs(Number(trx.postings[0].amount))}
                 </div>
                 <div>
-                  <button disabled={loading} onClick={() => startEdit(trx)} style={{ cursor: "pointer", marginRight: "0.5rem", padding: "0.3rem", border: "1px solid #ccc" }}>編輯</button>
-                  <button disabled={loading} onClick={() => handleDelete(trx.id)} style={{ cursor: "pointer", padding: "0.3rem", border: "1px solid #d9534f", color: "#d9534f" }}>刪除</button>
+                  <button disabled={loading} onClick={() => startEdit(trx)} style={{ cursor: "pointer", marginRight: "0.5rem", padding: "0.3rem", border: "1px solid #ccc" }}>{t("edit")}</button>
+                  <button disabled={loading} onClick={() => handleDelete(trx.id)} style={{ cursor: "pointer", padding: "0.3rem", border: "1px solid #d9534f", color: "#d9534f" }}>{t("delete")}</button>
                 </div>
               </div>
             </>

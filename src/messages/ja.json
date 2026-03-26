@@ -30,14 +30,19 @@
     "amount": "金額",
     "date": "日付",
     "category": "カテゴリ",
-    "description": "説明",
+    "description": "説明 (例：昼食)",
     "memo": "メモ",
-    "from": "出金元",
-    "to": "入金先",
+    "from": "出金元 (支払方法)",
+    "to": "入金先 (支出カテゴリ)",
     "income": "収入",
     "expense": "支出",
     "transfer": "振替",
-    "payee": "支払先"
+    "payee": "支払先",
+    "startScanner": "📱 カメラ起動：LIVE レシートスキャン",
+    "analyzing": "🧠 AI 画像解析中...",
+    "capture": "📸 撮影＆分析開始",
+    "cancelScanner": "キャンセル",
+    "uploadFile": "📂 レシート画像をアップロード"
   },
   "category": {
     "food": "食費",
