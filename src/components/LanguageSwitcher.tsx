@@ -25,18 +25,10 @@ export default function LanguageSwitcher() {
   };
 
   return (
-    <select 
-      value={locale} 
+    <select
+      value={locale}
       onChange={(e) => switchLanguage(e.target.value)}
-      style={{
-        padding: "0.3rem 0.5rem",
-        borderRadius: "20px",
-        background: "var(--background)",
-        color: "inherit",
-        border: "1px solid #ccc",
-        fontSize: "0.9rem",
-        cursor: "pointer"
-      }}
+      className="lang-switcher"
     >
       <option value="zh-TW">🇹🇼 繁</option>
       <option value="zh-CN">🇨🇳 简</option>

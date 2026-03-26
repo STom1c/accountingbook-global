@@ -8,7 +8,7 @@ import { prisma } from "@/lib/prisma";
 import QuickAddTransaction from "@/components/QuickAddTransaction";
 import TransactionList from "@/components/TransactionList";
 import ThemeToggle from "@/components/ThemeToggle";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
+import HeaderMenu from "@/components/HeaderMenu";
 import ExpensePieChart from "@/components/ExpensePieChart";
 import Image from "next/image";
 
@@ -70,26 +70,21 @@ export default async function DashboardPage() {
   return (
     <div className="page-wrapper">
       <header className="dash-header">
-        {/* Row 1: Brand + compact controls */}
         <div className="dash-header-row1">
           <div className="dash-header-brand">
             <Image src="/logo.png" alt="Icon" width={32} height={32} style={{ borderRadius: "8px", objectFit: "cover" }} />
             <h1>MoneyBook</h1>
             <span className="version-badge">v{version}</span>
           </div>
-          <div className="dash-header-controls">
-            <LanguageSwitcher />
+          <div className="dash-header-actions">
             <ThemeToggle />
-            <a href="import" className="dash-import-btn" title="Import Data">↑</a>
-            <span className="dash-user-name">{session.user.name}</span>
-            <form action={async () => {
-              "use server";
-              await signOut({ redirectTo: "/" });
-            }}>
-              <button type="submit" className="btn btn-danger-text">
-                {authT("signOut")}
-              </button>
-            </form>
+            <HeaderMenu
+              userName={session.user.name}
+              signOutAction={async () => {
+                "use server";
+                await signOut({ redirectTo: "/" });
+              }}
+            />
           </div>
         </div>
       </header>
